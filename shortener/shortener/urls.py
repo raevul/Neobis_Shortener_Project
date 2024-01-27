@@ -16,10 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from url.views import Redirector
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:short_url>/', Redirector.as_view()),
-    path('api/v1/', include('url.urls')),
+    path('api/v1/url/', include('url.urls')),
 ]

@@ -1,7 +1,4 @@
 from django.db import models
-from random import choices
-from string import ascii_letters
-from django.conf import settings
 
 
 class URL(models.Model):
