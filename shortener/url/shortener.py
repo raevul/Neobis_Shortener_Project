@@ -1,5 +1,8 @@
 import random
 import string
+from random import choice
+from string import ascii_letters
+from .models import Url
 
 
 class Shortener:
