@@ -1,4 +1,3 @@
-from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.shortcuts import redirect
@@ -7,13 +6,20 @@ from django.conf import settings
 
 from .models import URL
 from .serializers import URLSerializer
-from .shortener import Shortener
+from .shorten import Shortener
 
 
 class URLSListView(APIView):
     def get(self, request):
         urls = URL.objects.all()
         return Response({'urls': URLSerializer(urls, many=True).data})
+
+# class URLSListView(APIView):
+#     def get(self, request):
+#         urls = URL.objects.all()
+#         short_links = [url.short_link for url in urls]
+#         short_urls = map(lambda x: settings.HOST_URL + str(x), short_links)
+#         return Response({'short_links': short_urls})
 
 
 class RedirectOriginalURLView(APIView):
